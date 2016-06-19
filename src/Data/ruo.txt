@@ -1,0 +1,939 @@
+﻿Aktivované náklady na vývoj
+012
+aktiv
+---
+Softvér
+013
+aktiv
+---
+Oceniteľné práva
+014
+aktiv
+---
+Goodwill
+015
+aktiv
+---
+Ostatný dlhodobý nehmotný majetok
+019
+aktiv
+---
+Stavby
+021
+aktiv
+---
+Samostatne hnuteľné veci a súbory hnuteľných vecí
+022
+aktiv
+---
+Pestovateľské celky trvalých porastov
+025
+aktiv
+---
+Základné stádo a ťažné zvieratá
+026
+aktiv
+---
+Ostatný dlhodobý hmotný majetok
+029
+aktiv
+---
+Pozemky
+031
+aktiv
+---
+Umelecké diela a zbierky
+031
+aktiv
+---
+Obstaranie dlhodobého nehmotného majetku
+041
+aktiv
+---
+Obstaranie dlhodobého hmotného majetku
+042
+aktiv
+---
+Obstaranie dlhodobého finančného majetku
+043
+aktiv
+---
+Poskytnuté preddavky na dlhodobý nehmotný majetok
+051
+aktiv
+---
+Poskytnuté preddavky na dlhodobý hmotný majetok
+052
+aktiv
+---
+Poskytnuté preddavky na dlhodobý finančný majetok
+053
+aktiv
+---
+Podielové cenné papiere a podiely v dcérskej účtovnej jednotke
+061
+aktiv
+---
+Podielové cenné papiere a podiely v spoločnosti s podstatným vplyvom
+062
+aktiv
+---
+Realizovateľné cenné papiere a podiely
+063
+aktiv
+---
+Dlhové cenné papiere držané do splatnosti
+065
+aktiv
+---
+Pôžičky účtovnej jednotke v rámci podielovej účasti
+066
+aktiv
+---
+Ostatné pôžičky
+067
+aktiv
+---
+Ostatný dlhodobý finančný majetok
+069
+aktiv
+---
+Oprávky k aktivovaným nákladom na vývoj
+072
+pasiv
+---
+Oprávky k softvéru
+073
+pasiv
+---
+Oprávky k oceniteľným právam
+074
+pasiv
+---
+Oprávky ku goodwillu
+075
+pasiv
+---
+Oprávky k ostatnému dlhodobému nehmotnému majetku
+079
+pasiv
+---
+Oprávky k stavbám
+081
+pasiv
+---
+Oprávky k samostatným hnuteľným veciam a k súboru hnuteľných vecí
+082
+pasiv
+---
+Oprávky k pestovateľským celkom trvalých porastov
+085
+pasiv
+---
+Oprávky k základnému stádu a ťažným zvieratám
+086
+pasiv
+---
+Oprávky k ostatnému dlhodobému hmotnému majetku
+089
+pasiv
+---
+Opravné položky k dlhodobému nehmotnému majetku
+091
+pasiv
+---
+Opravné položky k dlhodobému hmotnému majetku
+092
+pasiv
+---
+Opravné položky k nedokončenému dlhodobému nehmotnému majetku
+093
+pasiv
+---
+Opravné položky k nedokončenému dlhodobému hmotnému majetku
+094
+pasiv
+---
+Opravné položky k poskytnutým preddavkom na dlhodobý majetok
+095
+pasiv
+---
+Opravné položky k dlhodobému finančnému majetku
+096
+pasiv
+---
+Opravné položky k nadobudnutému majetku
+097
+pasiv
+---
+Oprávky k opravnej položke k nadobudnutému majetku
+098
+pasiv
+---
+Obstaranie materiálu
+111
+aktiv
+---
+Materiál na sklade
+112
+aktiv
+---
+Materiál na ceste
+119
+aktiv
+---
+Nedokončená výroba
+121
+aktiv
+---
+Polotovary vlastnej výroby
+122
+aktiv
+---
+Výrobky
+123
+aktiv
+---
+Zvieratá
+124
+aktiv
+---
+Obstaranie tovaru
+131
+aktiv
+---
+Tovar na sklade a v predajniach
+132
+aktiv
+---
+Nehnuteľnosť na predaj
+133
+aktiv
+---
+Tovar na ceste
+139
+aktiv
+---
+Opravné položky k materiálu
+191
+pasiv
+---
+Opravné položky k nedokončenej výrobe
+192
+pasiv
+---
+Opravné položky k polotovarom vlastnej výroby
+193
+pasiv
+---
+Opravné položky k výrobkom
+194
+pasiv
+---
+Opravné položky k zvieratám
+195
+pasiv
+---
+Opravné položky k tovaru
+196
+pasiv
+---
+Pokladnica
+211
+aktiv
+---
+Ceniny
+213
+aktiv
+---
+Bankové účty
+221
+aktiv
+---
+Krátkodobé bankové úvery
+231
+pasiv
+---
+Eskontné úvery
+232
+pasiv
+---
+Vydané krátkodobé dlhopisy
+241
+pasiv
+---
+Ostatné krátkodobé finačné výpomoci
+249
+pasiv
+---
+Majetkové cenné papiere na obchodovanie
+251
+aktiv
+---
+Vlastné akcie a vlastné obchodné podiely
+252
+aktiv
+---
+Dlhové cenné papiere na obchodovanie
+253
+aktiv
+---
+Vlastné dlhopisy
+255
+aktiv
+---
+Dlhové cenné papiere so splatnosťou do jedného roka držané do splatnosti
+256
+aktiv
+---
+Ostatné realizovateľné cenné papiere
+257
+aktiv
+---
+Obstaranie krátkodobého finančného majetku
+259
+aktiv
+---
+Peniaze na ceste
+261
+aktiv
+---
+Opravné položky ku krátkodobému finančnému majetku
+291
+pasiv
+---
+Odberatelia
+311
+aktiv
+---
+Zmenky na inkaso
+312
+aktiv
+---
+Pohľadávky za eskontné cenné papiere
+313
+aktiv
+---
+Poskytnuté preddavky
+314
+aktiv
+---
+Ostatné pohľadávky
+315
+aktiv
+---
+Čistá hodnota zákazky
+316
+aktiv
+---
+Dodávatelia
+321
+pasiv
+---
+Zmenky na úhradu
+322
+pasiv
+---
+Krátkodobé rezervy
+323
+pasiv
+---
+Prijaté preddavky
+324
+pasiv
+---
+Ostatné záväzky
+325
+pasiv
+---
+Nevyfakturované dodávky
+326
+pasiv
+---
+Zamestnanci
+331
+pasiv
+---
+Ostatné záväzky voči zamestnancom
+333
+pasiv
+---
+Pohľadávky voči zamestnancom
+335
+aktiv
+---
+Zúčtovanie s orgánmi sociálneho poistenia a zdravotného poistenia
+336
+pasiv
+---
+Daň z príjmov
+341
+pasiv
+---
+Ostatné priame dane
+342
+pasiv
+---
+Daň z pridanej hodnoty
+343
+pasiv
+---
+Ostatné dane a poplatky
+345
+pasiv
+---
+Dotácie zo štátneho rozpočtu
+346
+pasiv
+---
+Ostatné dotácie
+347
+pasiv
+---
+Pohľadávky v rámci podielovej účasti
+351
+aktiv
+---
+Pohľadávky za upísané vlastné imanie
+353
+aktiv
+---
+Pohľadávky voči spoločníkom a členom pri úhrade straty
+354
+aktiv
+---
+Ostatné pohľadávky voči spoločníkom a členom
+355
+aktiv
+---
+Pohľadávky voči účastníkom združenia
+358
+aktiv
+---
+Záväzky v rámci podielovej účasti
+361
+pasiv
+---
+Záväzky voči spoločníkom a členom pri rozdeľovaní zisku
+364
+pasiv
+---
+Ostatné záväzky voči spoločníkom a členom
+365
+pasiv
+---
+Záväzky voči spoločníkom a členom zo závislej činnosti
+366
+pasiv
+---
+Záväzky z upísaných nesplatených cenných papierov a vkladov
+367
+pasiv
+---
+Záväzky voči účastníkom združenia
+368
+pasiv
+---
+Pohľadávky z predaja podniku
+371
+aktiv
+---
+Záväzky z kúpy podniku
+372
+pasiv
+---
+Pohľadávky a záväzky z pevných termínových operácií
+373
+aktiv
+---
+Pohľadávky z nájmu
+374
+aktiv
+---
+Pohľadávky z vydaných dlhopisov
+375
+aktiv
+---
+Nakúpené opcie
+376
+aktiv
+---
+Predané opcie
+377
+pasiv
+---
+Iné pohľadávky
+378
+aktiv
+---
+Iné záväzky
+379
+pasiv
+---
+Náklady budúcich období
+381
+aktiv
+---
+Komplexné náklady budúcich období
+382
+aktiv
+---
+Výdavky budúcich období
+383
+pasiv
+---
+Výnosy budúcich období
+384
+pasiv
+---
+Príjmy budúcich období
+385
+aktiv
+---
+Opravné položky k pohľadávkam
+391
+pasiv
+---
+Vnútorné zúčtovanie
+395
+aktiv
+---
+Spojovací účet pri združení
+398
+aktiv
+---
+Základné imanie
+411
+pasiv
+---
+Emisné ážio
+412
+pasiv
+---
+Ostatné kapitálové fondy
+413
+pasiv
+---
+Oceňovacie rozdiely z precenenia majetku a záväzkov
+414
+pasiv
+---
+Oceňovacie rozdiely z kapitálových účastín
+415
+pasiv
+---
+Oceňovacie rozdiely z precenenia pri zlúčení, splynutí a rozdelení
+416
+pasiv
+---
+Zákonný rezervný fond z kapitálových vkladov
+417
+pasiv
+---
+Nedeliteľný fond z kapitálových vkladov
+418
+pasiv
+---
+Zmenky základného imania
+419
+pasiv
+---
+Zákonný rezervný fond
+421
+pasiv
+---
+Nedeliteľný fond
+422
+pasiv
+---
+Štatutárne fondy
+423
+pasiv
+---
+Ostatné fondy
+427
+pasiv
+---
+Nerozdelený zisk minulých rokov
+428
+pasiv
+---
+Neuhradená strata minulých rokov
+429
+pasiv
+---
+Výsledok hospodárenia v schvaľovaní
+431
+pasiv
+---
+Rezervy zákonné
+451
+pasiv
+---
+Ostatné rezervy
+459
+pasiv
+---
+Bankové úvery
+461
+pasiv
+---
+Dlhodobé záväzky v rámci podielovej účasti
+471
+pasiv
+---
+Záväzky zo sociálneho fondu
+472
+pasiv
+---
+Vydané dlhopisy
+473
+pasiv
+---
+Záväzky z nájmu
+474
+pasiv
+---
+Dlhodobé prijaté preddavky
+475
+pasiv
+---
+Dlhodobé nevyfakturované dodávky
+476
+pasiv
+---
+Dlhodobé zmenky na úhradu
+478
+pasiv
+---
+Ostatné dlhodobé záväzky
+479
+pasiv
+---
+Odložený daňový záväzok a odložená daňová pohľadávka
+481
+pasiv
+---
+Vlastné imanie fyzickej osoby - Podnikateľa
+491
+pasiv
+---
+Spotreba materiálu
+501
+nakladovy
+---
+Spotreba energie
+502
+nakladovy
+---
+Spotreba ostatných neskladovateľných dodávok
+503
+nakladovy
+---
+Predaný tovar
+504
+nakladovy
+---
+Tvorba a zúčtovanie opravných položiek k zásobám
+505
+nakladovy
+---
+Predaná nehnuteľnosť
+507
+nakladovy
+---
+Opravy a udržiavanie
+511
+nakladovy
+---
+Cestovné
+512
+nakladovy
+---
+Náklady na reprezentáciu
+513
+nakladovy
+---
+Ostatné služby
+518
+nakladovy
+---
+Mzdové náklady
+521
+nakladovy
+---
+Príjmy spoločníkov a členov zo závislej činnosti
+522
+nakladovy
+---
+Odmeny členom orgánov spoločnosti a družstva
+523
+nakladovy
+---
+Zákonné sociálne poistenie
+524
+nakladovy
+---
+Ostatné sociálne poistenie
+525
+nakladovy
+---
+Sociálne náklady fyzickej osoby - podnikateľa
+526
+nakladovy
+---
+Zákonné sociálne náklady
+527
+nakladovy
+---
+Ostatné sociálne náklady
+528
+nakladovy
+---
+Daň z motorových vozidiel
+531
+nakladovy
+---
+Daň z nehnuteľností
+532
+nakladovy
+---
+Ostatné dane a poplatky
+538
+nakladovy
+---
+Zostatková cena predaného dlhodobého nehmotného a dlhodobého hmotného majetku
+541
+nakladovy
+---
+Predaný materiál
+542
+nakladovy
+---
+Dary
+543
+nakladovy
+---
+Zmluvné pokuty, penále a úroky z omeškania
+544
+nakladovy
+---
+Ostatné pokuty, penále a úroky z omeškania
+545
+nakladovy
+---
+Odpis pohľadávky
+546
+nakladovy
+---
+Tvorba a zúčtovanie opravných položiek k pohľadávkam
+547
+nakladovy
+---
+Ostatné náklady na hospodársku činnosť
+548
+nakladovy
+---
+Manká a škody
+549
+nakladovy
+---
+Odpisy dlhodobého nehmotného majetku a dlhodobého hmotného majetku
+551
+nakladovy
+---
+Tvorba a zúčtovanie opravných položiek k dlhodobému majetku
+553
+nakladovy
+---
+Zúčtovanie komplexných nákladov budúcich období
+555
+nakladovy
+---
+Zúčtovanie oprávky k opravnej položke k nadobudnutému majetku
+557
+nakladovy
+---
+Predané cenné papiere a podiely
+561
+nakladovy
+---
+Úroky
+562
+nakladovy
+---
+Kurzové straty
+563
+nakladovy
+---
+Náklady na precenenie cenných papierov
+564
+nakladovy
+---
+Tvorba a zúčtovanie opravných položiek k finančnému majetku
+565
+nakladovy
+---
+Náklady na krátkodobý finančný majetok
+566
+nakladovy
+---
+Náklady na derivátové operácie
+567
+nakladovy
+---
+Ostatné finančné náklady
+568
+nakladovy
+---
+Manká a škody na finančnom majetku
+569
+nakladovy
+---
+Splatná daň z príjmov
+591
+nakladovy
+---
+Odložená daň z príjmov
+592
+nakladovy
+---
+Dodatočné odvody dane z príjmov
+595
+nakladovy
+---
+Prevod podielov na výsledku hospodárenia spoločníkom
+596
+nakladovy
+---
+Tržby za vlastné výrobky
+601
+vynosovy
+---
+Tržby z predaja služieb
+602
+vynosovy
+---
+Tržby za tovar
+604
+vynosovy
+---
+Výnosy zo zákazky
+606
+vynosovy
+---
+Výnosy z nehnuteľnosti na predaj
+607
+vynosovy
+---
+Zmena stavu nedokončenej výroby
+611
+vynosovy
+---
+Zmena stavu polotovarov
+612
+vynosovy
+---
+Zmena stavu výrobkov
+613
+vynosovy
+---
+Zmena stavu zvierat
+614
+vynosovy
+---
+Aktivácia materiálu a tovaru
+621
+vynosovy
+---
+Aktivácia vnútroorganizačných služieb
+622
+vynosovy
+---
+Aktivácia dlhodobého nehmotného majetku
+623
+vynosovy
+---
+Aktivácia dlhodobého hmotného majetku
+624
+vynosovy
+---
+Tržby z predaja dlhodobého nehmotného majetku a dlhodobého hmotného majetku
+641
+vynosovy
+---
+Tržby z predaja materiálu
+642
+vynosovy
+---
+Zmluvné pokuty, penále a úroky z omeškania
+644
+vynosovy
+---
+Ostatné pokuty, penále a úroky z omeškania
+645
+vynosovy
+---
+Výnosy z odpísaných pohľadávok
+646
+vynosovy
+---
+Ostatné výnosy z hospodárskej činnosti
+648
+vynosovy
+---
+Zúčtovanie komplexných nákladov budúcich období
+655
+vynosovy
+---
+Zúčtovanie oprávky k opravnej položke k nadobudnutému majetku
+657
+vynosovy
+---
+Tržby z predaja cenných papierov a podielov
+661
+vynosovy
+---
+Úroky
+662
+vynosovy
+---
+Kurzové zisky
+663
+vynosovy
+---
+Výnosy z precenenia cenných papierov
+664
+vynosovy
+---
+Výnosy z dlhodobého finančného majetku
+665
+vynosovy
+---
+Výnosy z krátkodobého finančného majetku
+666
+vynosovy
+---
+Výnody z derivátových operácií
+667
+vynosovy
+---
+Ostatné finančné výnosy
+668
+vynosovy
+---
+Začiatočný účet súvahový
+701
+pasiv
+---
+Konečný účet súvahový
+702
+aktiv
+---
+Účet ziskov a strát
+710
+aktiv
+---
+Začiatočný účet nákladov a výnosov
+711
+pasiv

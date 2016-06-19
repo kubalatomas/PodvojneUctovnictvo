@@ -1,0 +1,936 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package GUI;
+
+import Doklady.BV;
+import Doklady.ID;
+import Doklady.PFA;
+import Doklady.PPD;
+import Doklady.VFA;
+import Doklady.VPD;
+import Doklady.ZoznamDokladov;
+import Podnik.FormaPodniku;
+import Podnik.Podnik;
+import Majetok.ZoznamMajetku;
+import Partneri.ZoznamPartnerov;
+import RamcovaUctovaOsnova.RamcovaUctovaOsnova;
+import Sklad.PohybyNaSklade;
+import Sklad.Sklad;
+import Sklad.ZoznamSkladovychKariet;
+import java.awt.Desktop;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Tomáš
+ */
+public class HlavneOknoGUI extends javax.swing.JFrame {
+    private RamcovaUctovaOsnova ruo;
+    private ZoznamPartnerov zp;
+    private ZoznamMajetku zm;
+    private ZoznamSkladovychKariet zsk ;
+    private Sklad sklad;
+    private PohybyNaSklade pohyby;
+    private Podnik podnik;
+    private ZoznamDokladov zd;
+    /**
+     * Creates new form MainWindow
+     */
+    public HlavneOknoGUI(Podnik p) throws IOException, FileNotFoundException, ClassNotFoundException {
+        try {
+            if (p == null) {
+                JOptionPane.showMessageDialog(this, "Podnik sa nevytvoril. Program sa ukončí");
+                System.exit(0);
+            }
+            initComponents();
+            this.ruo = new RamcovaUctovaOsnova();
+            this.setTitle("Podvojne Uctovnictvo - Verza -1.0");
+            this.zp = new ZoznamPartnerov();
+            this.zm = new ZoznamMajetku();
+            this.zsk = new ZoznamSkladovychKariet();
+            this.sklad = new Sklad();
+            this.pohyby = new PohybyNaSklade();
+            this.podnik = p;
+            this.nazovPodniku.setText(podnik.toString());
+            this.adresaPodniku.setText(podnik.getAdresa());
+            if (podnik.getForma() == FormaPodniku.as) {
+                this.formaPodniku.setText("Akciová spoločnosť");
+            } else {
+                this.formaPodniku.setText("Spoločnosť s ručením obmedzením");
+            }
+            this.zd = new ZoznamDokladov();
+            this.zostatokPodkladnice.setText(String.valueOf(ruo.getUcetPodlaCisla("211").dajKonecnyZostatok()) + " €");
+            this.zostatokBU.setText(String.valueOf(ruo.getUcetPodlaCisla("221").dajKonecnyZostatok()) + " €");
+            this.pocetMajetku.setText(String.valueOf(zm.getZoznamMajetku().size()));
+            this.pocetPohybov.setText(String.valueOf(pohyby.getPohyby().size()));
+            this.pocetPartnerov.setText(String.valueOf(zp.getPartneri().size()));
+            this.pocetDokladov.setText(String.valueOf(zd.getZoznamDokladov().size()));
+            this.setResizable(false);
+            this.setLocationRelativeTo(null);
+            this.setVisible(true);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, "Nepodarilo sa vytvoriť firmu");
+            System.exit(0);
+        }
+    }
+    
+        public HlavneOknoGUI(Podnik p, RamcovaUctovaOsnova ruo, ZoznamPartnerov zp, ZoznamMajetku zm, ZoznamSkladovychKariet zsk, Sklad sklad, PohybyNaSklade pohyby, ZoznamDokladov zd) throws IOException, FileNotFoundException, ClassNotFoundException {
+        initComponents();
+        this.ruo = ruo;
+        this.setTitle("Podvojne Uctovnictvo - Verza -1.0");
+        this.zp = zp;
+        this.zm = zm;
+        this.zsk = zsk;
+        this.sklad = sklad;
+        this.pohyby = pohyby;
+        this.podnik = p;
+        this.nazovPodniku.setText(podnik.toString());
+        this.adresaPodniku.setText(podnik.getAdresa());
+        if (podnik.getForma() == FormaPodniku.as) {
+            this.formaPodniku.setText("Akciová spoločnosť");
+        } else {
+            this.formaPodniku.setText("Spoločnosť s ručením obmedzením");
+        }
+        this.zd = zd;
+        this.zostatokPodkladnice.setText(String.valueOf(ruo.getUcetPodlaCisla("211").dajKonecnyZostatok()) + " €");
+        this.zostatokBU.setText(String.valueOf(ruo.getUcetPodlaCisla("221").dajKonecnyZostatok()) + " €");
+        this.pocetMajetku.setText(String.valueOf(zm.getZoznamMajetku().size()));
+        this.pocetPohybov.setText(String.valueOf(pohyby.getPohyby().size()));
+        this.pocetPartnerov.setText(String.valueOf(zp.getPartneri().size()));
+        this.pocetDokladov.setText(String.valueOf(zd.getZoznamDokladov().size()));
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+    }
+    
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jMenuItem3 = new javax.swing.JMenuItem();
+        pridajID = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        nazovPodniku = new javax.swing.JLabel();
+        formaPodniku = new javax.swing.JLabel();
+        adresaPodniku = new javax.swing.JLabel();
+        pridajBV = new javax.swing.JButton();
+        pridajPPD = new javax.swing.JButton();
+        pridajVPD = new javax.swing.JButton();
+        pridajVFA = new javax.swing.JButton();
+        pridajPFA = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        zostatokPodkladnice = new javax.swing.JLabel();
+        zostatokBU = new javax.swing.JLabel();
+        pocetDokladov = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        pocetPohybov = new javax.swing.JLabel();
+        pocetPartnerov = new javax.swing.JLabel();
+        pocetMajetku = new javax.swing.JLabel();
+        obnovUdaje = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        oProgrameMenu = new javax.swing.JMenuItem();
+        ukoncenieProgramuMenu = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        zalohujPodnikMenu = new javax.swing.JMenuItem();
+        upravNastaveniaPodnikuMenu = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        skladMenu = new javax.swing.JMenuItem();
+        pohybyNaSkladeMenu = new javax.swing.JMenuItem();
+        partneriMenu = new javax.swing.JMenuItem();
+        majetokPodnikuMenu = new javax.swing.JMenuItem();
+        uctovyRozvrhMenu = new javax.swing.JMenuItem();
+        uctovneDokladyMenu = new javax.swing.JMenuItem();
+        skladoveKartyMenu = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        vypisUctovnychDokladov = new javax.swing.JMenuItem();
+        vypisSkladovychKariet = new javax.swing.JMenuItem();
+        vypisInventarnehoSupisu = new javax.swing.JMenuItem();
+        vypisMajetku = new javax.swing.JMenuItem();
+        vypisPartnerov = new javax.swing.JMenuItem();
+        vypisPohybovNaSklade = new javax.swing.JMenuItem();
+        vypisSuvahu = new javax.swing.JMenuItem();
+
+        jMenuItem3.setText("jMenuItem3");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
+
+        pridajID.setText("Pridaj interný doklad");
+        pridajID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridajIDActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Názov podniku");
+
+        jLabel2.setText("Adresa podniku");
+
+        jLabel3.setText("Forma podniku");
+
+        nazovPodniku.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        nazovPodniku.setText("   ");
+
+        formaPodniku.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        formaPodniku.setText("   ");
+
+        adresaPodniku.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        adresaPodniku.setText("           ");
+
+        pridajBV.setText("Pridaj bankový výpis");
+        pridajBV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridajBVActionPerformed(evt);
+            }
+        });
+
+        pridajPPD.setText("Pridaj prijímový pokladničný doklad");
+        pridajPPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridajPPDActionPerformed(evt);
+            }
+        });
+
+        pridajVPD.setText("Pridaj výdavkový pokladničný doklad");
+        pridajVPD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridajVPDActionPerformed(evt);
+            }
+        });
+
+        pridajVFA.setText("Pridaj vystavenú faktúru");
+        pridajVFA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridajVFAActionPerformed(evt);
+            }
+        });
+
+        pridajPFA.setText("Pridaj prijatú faktúru");
+        pridajPFA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pridajPFAActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Informácie podniku");
+
+        jLabel5.setText("Zostatok v pokladnici");
+
+        jLabel6.setText("Zostatok na bankovom účte");
+
+        jLabel7.setText("Počet evidovaných účtovných dokladov");
+
+        zostatokPodkladnice.setText("zostatokPokladnice");
+
+        zostatokBU.setText("zostatokBU");
+
+        pocetDokladov.setText("jLabel8");
+
+        jLabel9.setText("Počet evidovaných pohybov");
+
+        jLabel10.setText("Počet evidovaných partnerov");
+
+        jLabel11.setText("Počet evidovaného majetku");
+
+        pocetPohybov.setText("jLabel12");
+
+        pocetPartnerov.setText("jLabel13");
+
+        pocetMajetku.setText("jLabel14");
+
+        obnovUdaje.setText("Obnov údaje");
+        obnovUdaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                obnovUdajeActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Program");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        oProgrameMenu.setText("O programe");
+        oProgrameMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oProgrameMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(oProgrameMenu);
+
+        ukoncenieProgramuMenu.setText("Ukončenie programu");
+        ukoncenieProgramuMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ukoncenieProgramuMenuActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ukoncenieProgramuMenu);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Podnik");
+
+        zalohujPodnikMenu.setText("Zalohuj podnik");
+        zalohujPodnikMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zalohujPodnikMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(zalohujPodnikMenu);
+
+        upravNastaveniaPodnikuMenu.setText("Uprav nastavenia podniku");
+        upravNastaveniaPodnikuMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                upravNastaveniaPodnikuMenuActionPerformed(evt);
+            }
+        });
+        jMenu2.add(upravNastaveniaPodnikuMenu);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Účtovníctvo");
+
+        skladMenu.setText("Sklad");
+        skladMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skladMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(skladMenu);
+
+        pohybyNaSkladeMenu.setText("Pohyby na sklade");
+        pohybyNaSkladeMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pohybyNaSkladeMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(pohybyNaSkladeMenu);
+
+        partneriMenu.setText("Partneri");
+        partneriMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                partneriMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(partneriMenu);
+
+        majetokPodnikuMenu.setText("Majetok podniku");
+        majetokPodnikuMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                majetokPodnikuMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(majetokPodnikuMenu);
+
+        uctovyRozvrhMenu.setText("Účtový rozvrh");
+        uctovyRozvrhMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uctovyRozvrhMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(uctovyRozvrhMenu);
+
+        uctovneDokladyMenu.setText("Účtovné doklady");
+        uctovneDokladyMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uctovneDokladyMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(uctovneDokladyMenu);
+
+        skladoveKartyMenu.setText("Skladové karty");
+        skladoveKartyMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skladoveKartyMenuActionPerformed(evt);
+            }
+        });
+        jMenu3.add(skladoveKartyMenu);
+
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Výpis");
+
+        vypisUctovnychDokladov.setText("Výpis účtovných dokladov do súboru");
+        vypisUctovnychDokladov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisUctovnychDokladovActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisUctovnychDokladov);
+
+        vypisSkladovychKariet.setText("Výpis skladových kariet do súboru");
+        vypisSkladovychKariet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisSkladovychKarietActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisSkladovychKariet);
+
+        vypisInventarnehoSupisu.setText("Výpis inventárneho súpisu skladu do súboru");
+        vypisInventarnehoSupisu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisInventarnehoSupisuActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisInventarnehoSupisu);
+
+        vypisMajetku.setText("Výpis majetku do súboru");
+        vypisMajetku.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisMajetkuActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisMajetku);
+
+        vypisPartnerov.setText("Výpis partnerov do súboru");
+        vypisPartnerov.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisPartnerovActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisPartnerov);
+
+        vypisPohybovNaSklade.setText("Výpis pohybov na sklade do súboru");
+        vypisPohybovNaSklade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisPohybovNaSkladeActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisPohybovNaSklade);
+
+        vypisSuvahu.setText("Výpis súvahy do súboru");
+        vypisSuvahu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vypisSuvahuActionPerformed(evt);
+            }
+        });
+        jMenu4.add(vypisSuvahu);
+
+        jMenuBar1.add(jMenu4);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(pocetDokladov)
+                                    .addComponent(zostatokBU))
+                                .addGap(216, 216, 216)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel11))
+                                .addGap(76, 76, 76))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(zostatokPodkladnice)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel9)
+                                .addGap(82, 82, 82)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pocetPartnerov)
+                            .addComponent(pocetPohybov)
+                            .addComponent(pocetMajetku)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(formaPodniku, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(obnovUdaje)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(28, 28, 28)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel1)
+                                                .addComponent(jLabel3)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jLabel4)))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(51, 51, 51)
+                                            .addComponent(adresaPodniku, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(131, 131, 131))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(49, 49, 49)
+                                    .addComponent(nazovPodniku, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pridajVPD)
+                                .addComponent(pridajID, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pridajBV, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pridajPPD, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pridajVFA, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pridajPFA, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nazovPodniku)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(formaPodniku)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(adresaPodniku))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(116, 116, 116)
+                                .addComponent(pridajPPD))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(pridajID)
+                                .addGap(11, 11, 11)
+                                .addComponent(pridajBV)))
+                        .addGap(11, 11, 11)
+                        .addComponent(pridajVFA)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pridajVPD)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pridajPFA)))
+                .addGap(36, 36, 36)
+                .addComponent(jLabel4)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(zostatokPodkladnice)
+                    .addComponent(jLabel9)
+                    .addComponent(pocetPohybov))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(zostatokBU)
+                    .addComponent(jLabel10)
+                    .addComponent(pocetPartnerov))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(pocetDokladov)
+                    .addComponent(jLabel11)
+                    .addComponent(pocetMajetku))
+                .addGap(18, 18, 18)
+                .addComponent(obnovUdaje, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void oProgrameMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oProgrameMenuActionPerformed
+        OProgrameGUI about = new OProgrameGUI(this, true);
+        about.setLocationRelativeTo(null);
+    }//GEN-LAST:event_oProgrameMenuActionPerformed
+
+    private void ukoncenieProgramuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ukoncenieProgramuMenuActionPerformed
+        int i = JOptionPane.showConfirmDialog(null, "Naozaj chcete ukončiť program? Ak ste nevykonali zálohu podniku, všetky údaje budú stratené.", "Ukončenie programu", JOptionPane.YES_NO_OPTION);
+        if (i == JOptionPane.YES_NO_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_ukoncenieProgramuMenuActionPerformed
+
+    private void pridajIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridajIDActionPerformed
+        PridajIDGUI pid = new PridajIDGUI(this, true, ruo, zp);
+        if (pid.getId() != null) {
+            ID doklad = pid.getId();
+            JOptionPane.showMessageDialog(this, doklad.zauctujDoklad());
+            zd.pridajDoklad(pid.getId());
+        }
+        this.obnovLabely();        
+    }//GEN-LAST:event_pridajIDActionPerformed
+
+    private void pridajVPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridajVPDActionPerformed
+        PridajVPDGUI pid = new PridajVPDGUI(this, true, ruo, zp);
+        if (pid.getVpd() != null) {
+            VPD doklad = pid.getVpd();
+            JOptionPane.showMessageDialog(this, doklad.zauctujDoklad());
+            zd.pridajDoklad(pid.getVpd());
+        }
+        this.obnovLabely();           
+    }//GEN-LAST:event_pridajVPDActionPerformed
+
+    private void pridajPPDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridajPPDActionPerformed
+        PridajPPDGUI pid = new PridajPPDGUI(this, true, ruo, zp);
+        if (pid.getPpd() != null) {
+            PPD doklad = pid.getPpd();
+            JOptionPane.showMessageDialog(this, doklad.zauctujDoklad());
+            zd.pridajDoklad(pid.getPpd());
+        }
+        this.obnovLabely();
+    }//GEN-LAST:event_pridajPPDActionPerformed
+
+    private void pridajBVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridajBVActionPerformed
+        PridajBVGUI pid = new PridajBVGUI(this, true, ruo, zp);
+        if (pid.getBv() != null) {
+            BV doklad = pid.getBv();
+            JOptionPane.showMessageDialog(this, doklad.zauctujDoklad());
+            zd.pridajDoklad(pid.getBv());
+        }
+        this.obnovLabely();        
+    }//GEN-LAST:event_pridajBVActionPerformed
+
+    private void pridajVFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridajVFAActionPerformed
+        PridajVFAGUI pid = new PridajVFAGUI(this, true, ruo, zp);
+        if (pid.getVfa() != null) {
+            VFA doklad = pid.getVfa();
+            JOptionPane.showMessageDialog(this, doklad.zauctujDoklad());
+            zd.pridajDoklad(pid.getVfa());
+        }
+        this.obnovLabely();        
+    }//GEN-LAST:event_pridajVFAActionPerformed
+
+    private void pridajPFAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pridajPFAActionPerformed
+        PridajPFAGUI pid = new PridajPFAGUI(this, true, ruo, zp);
+        if (pid.getPfa() != null) {
+            PFA doklad = pid.getPfa();
+            JOptionPane.showMessageDialog(this, doklad.zauctujDoklad());
+            zd.pridajDoklad(pid.getPfa());
+        }
+        this.obnovLabely();        
+    }//GEN-LAST:event_pridajPFAActionPerformed
+
+    private void skladMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skladMenuActionPerformed
+        SkladGUI s = new SkladGUI(sklad);
+        this.obnovLabely();
+    }//GEN-LAST:event_skladMenuActionPerformed
+
+    private void pohybyNaSkladeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pohybyNaSkladeMenuActionPerformed
+        PohybyNaSkladeGUI pns = new PohybyNaSkladeGUI(pohyby, zsk, sklad, ruo);
+        this.obnovLabely();        
+    }//GEN-LAST:event_pohybyNaSkladeMenuActionPerformed
+
+    private void uctovyRozvrhMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uctovyRozvrhMenuActionPerformed
+        RuoGUI ruoGUI = new RuoGUI(ruo);
+        this.obnovLabely();
+    }//GEN-LAST:event_uctovyRozvrhMenuActionPerformed
+
+    private void partneriMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partneriMenuActionPerformed
+        ZoznamPartnerovGUI zpgui = new ZoznamPartnerovGUI(zp);
+        this.obnovLabely();
+    }//GEN-LAST:event_partneriMenuActionPerformed
+
+    private void majetokPodnikuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_majetokPodnikuMenuActionPerformed
+        ZoznamMajetkuGUI zmGUI = new ZoznamMajetkuGUI(this.zm);
+        this.obnovLabely();
+    }//GEN-LAST:event_majetokPodnikuMenuActionPerformed
+
+    private void uctovneDokladyMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uctovneDokladyMenuActionPerformed
+        UctovneDokladyGUI ud = new UctovneDokladyGUI(zd);
+        this.obnovLabely();
+    }//GEN-LAST:event_uctovneDokladyMenuActionPerformed
+
+    private void skladoveKartyMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skladoveKartyMenuActionPerformed
+        ZoznamSkladovychKarietGUI zskgui = new ZoznamSkladovychKarietGUI(zsk, sklad);
+        this.obnovLabely();
+    }//GEN-LAST:event_skladoveKartyMenuActionPerformed
+
+    private void upravNastaveniaPodnikuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upravNastaveniaPodnikuMenuActionPerformed
+        UpravPodnikGUI up = new UpravPodnikGUI(this, true, podnik);
+        this.nazovPodniku.setText(podnik.toString());
+        this.adresaPodniku.setText(podnik.getAdresa());
+        if (podnik.getForma() == FormaPodniku.as) {
+            this.formaPodniku.setText("Akciová spoločnosť");
+        } else {
+            this.formaPodniku.setText("Spoločnosť s ručením obmedzením");
+        }
+    }//GEN-LAST:event_upravNastaveniaPodnikuMenuActionPerformed
+
+    private void vypisSuvahuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisSuvahuActionPerformed
+        try {
+            this.ruo.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Súvaha bola vytvorená\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }
+    }//GEN-LAST:event_vypisSuvahuActionPerformed
+
+    private void vypisPartnerovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisPartnerovActionPerformed
+        try {
+            this.zp.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Zoznam partnerov bol vytvorený\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                } catch (IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(this, ex);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_vypisPartnerovActionPerformed
+
+    private void vypisSkladovychKarietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisSkladovychKarietActionPerformed
+        try {
+            this.zsk.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Zoznam skladových kariet bol vytvorený\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException | IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException | IllegalStateException e) {
+            JOptionPane.showMessageDialog(this, e);
+        }    
+    }//GEN-LAST:event_vypisSkladovychKarietActionPerformed
+
+    private void vypisInventarnehoSupisuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisInventarnehoSupisuActionPerformed
+        try {
+            this.sklad.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Inventárny súpis skladu bol vytvorený\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException | IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException | IllegalStateException e) {
+            JOptionPane.showMessageDialog(this, e);
+        }            
+    }//GEN-LAST:event_vypisInventarnehoSupisuActionPerformed
+
+    private void vypisUctovnychDokladovActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisUctovnychDokladovActionPerformed
+        try {
+            this.zd.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Evidencia účtovných dokladov bola vytvorená\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException | IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException | IllegalStateException e) {
+            JOptionPane.showMessageDialog(this, e);
+        }    
+    }//GEN-LAST:event_vypisUctovnychDokladovActionPerformed
+
+    private void vypisMajetkuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisMajetkuActionPerformed
+        try {
+            this.zm.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Zoznam majetku bol vytvorený\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException | IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException | IllegalStateException e) {
+            JOptionPane.showMessageDialog(this, e);
+        }    
+    }//GEN-LAST:event_vypisMajetkuActionPerformed
+
+    private void vypisPohybovNaSkladeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vypisPohybovNaSkladeActionPerformed
+        try {
+            this.pohyby.vypisDoSuboru(podnik);
+            int i = JOptionPane.showConfirmDialog(this, "Zoznam pohybov na sklade bol vytvorený\nChcete otvoriť priečinok s výpismi?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+            if (i == JOptionPane.YES_NO_OPTION) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    File dirToOpen = new File("AppData\\Výpisy\\");
+                    desktop.open(dirToOpen);
+                } catch (IllegalArgumentException | IOException e) {
+                    JOptionPane.showMessageDialog(this, e);
+                }
+            } 
+        } catch (FileNotFoundException | IllegalStateException e) {
+            JOptionPane.showMessageDialog(this, e);
+        } 
+    }//GEN-LAST:event_vypisPohybovNaSkladeActionPerformed
+
+    private void zalohujPodnikMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zalohujPodnikMenuActionPerformed
+        String nazovSuboru = JOptionPane.showInputDialog(this, "Zadajte názov zálohy", "Záloha podniku", 1);
+        if (nazovSuboru == null) {
+            JOptionPane.showMessageDialog(this, "Záloha podniku nebola vykonaná");
+        } else if (nazovSuboru.length() == 0 || nazovSuboru.charAt(0) == ' ') {
+            JOptionPane.showMessageDialog(this, "Bol zadaný zlý názov súboru");
+        } else {
+            String file = "AppData\\Backup\\" + nazovSuboru;
+            ObjectOutputStream oos = null;
+            try {
+                oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(file)));
+                oos.writeObject(ruo);
+                oos.writeObject(zp);
+                oos.writeObject(zm);
+                oos.writeObject(zsk);
+                oos.writeObject(sklad);
+                oos.writeObject(pohyby);
+                oos.writeObject(podnik);
+                oos.writeObject(zd);
+                oos.close();
+                int i = JOptionPane.showConfirmDialog(this, "Záloha bola vytvorená\nChcete otvoriť priečinok so zálohou?", "Otvorenie zložky", JOptionPane.YES_NO_OPTION);
+                if (i == JOptionPane.YES_NO_OPTION) {
+                    Desktop desktop = Desktop.getDesktop();
+                    File dirToOpen = new File("AppData\\Backup\\");
+                    desktop.open(dirToOpen);
+                }
+            } catch (IOException | IllegalArgumentException e) {
+                JOptionPane.showMessageDialog(this, e);
+            }
+        }
+        
+    }//GEN-LAST:event_zalohujPodnikMenuActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+    }//GEN-LAST:event_formWindowClosed
+
+    private void obnovUdajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obnovUdajeActionPerformed
+        this.obnovLabely();
+    }//GEN-LAST:event_obnovUdajeActionPerformed
+
+    private void obnovLabely() {
+        this.zostatokPodkladnice.setText(String.valueOf(ruo.getUcetPodlaCisla("211").dajKonecnyZostatok()) + " €");
+        this.zostatokBU.setText(String.valueOf(ruo.getUcetPodlaCisla("221").dajKonecnyZostatok()) + " €");
+        this.pocetMajetku.setText(String.valueOf(zm.getZoznamMajetku().size()));
+        this.pocetPohybov.setText(String.valueOf(pohyby.getPohyby().size()));
+        this.pocetPartnerov.setText(String.valueOf(zp.getPartneri().size()));
+        this.pocetDokladov.setText(String.valueOf(zd.getZoznamDokladov().size()));
+    }
+    /**
+     * @param args the command line arguments
+     */
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adresaPodniku;
+    private javax.swing.JLabel formaPodniku;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem majetokPodnikuMenu;
+    private javax.swing.JLabel nazovPodniku;
+    private javax.swing.JMenuItem oProgrameMenu;
+    private javax.swing.JButton obnovUdaje;
+    private javax.swing.JMenuItem partneriMenu;
+    private javax.swing.JLabel pocetDokladov;
+    private javax.swing.JLabel pocetMajetku;
+    private javax.swing.JLabel pocetPartnerov;
+    private javax.swing.JLabel pocetPohybov;
+    private javax.swing.JMenuItem pohybyNaSkladeMenu;
+    private javax.swing.JButton pridajBV;
+    private javax.swing.JButton pridajID;
+    private javax.swing.JButton pridajPFA;
+    private javax.swing.JButton pridajPPD;
+    private javax.swing.JButton pridajVFA;
+    private javax.swing.JButton pridajVPD;
+    private javax.swing.JMenuItem skladMenu;
+    private javax.swing.JMenuItem skladoveKartyMenu;
+    private javax.swing.JMenuItem uctovneDokladyMenu;
+    private javax.swing.JMenuItem uctovyRozvrhMenu;
+    private javax.swing.JMenuItem ukoncenieProgramuMenu;
+    private javax.swing.JMenuItem upravNastaveniaPodnikuMenu;
+    private javax.swing.JMenuItem vypisInventarnehoSupisu;
+    private javax.swing.JMenuItem vypisMajetku;
+    private javax.swing.JMenuItem vypisPartnerov;
+    private javax.swing.JMenuItem vypisPohybovNaSklade;
+    private javax.swing.JMenuItem vypisSkladovychKariet;
+    private javax.swing.JMenuItem vypisSuvahu;
+    private javax.swing.JMenuItem vypisUctovnychDokladov;
+    private javax.swing.JMenuItem zalohujPodnikMenu;
+    private javax.swing.JLabel zostatokBU;
+    private javax.swing.JLabel zostatokPodkladnice;
+    // End of variables declaration//GEN-END:variables
+}

@@ -1,0 +1,22 @@
+UNIZA s. r. o.
+Veľký diel
+Účtovný rok: 2015
+
+Zoznam skladových kariet ku dňu 11.5.2015
+
+Počet vedených skladových kariet v podniku: 2
+
+============================================================================================
+
+Názov skladovej karty: Cukor
+ID skladovej karty: 1
+Cena skladovej karty: 50.0 €/kg
+Dátum zaradenia: 11.5.2015
+
+
+Názov skladovej karty: Soľ
+ID skladovej karty: 2
+Cena skladovej karty: 50.0 €/kg
+Dátum zaradenia: 11.5.2015
+
+

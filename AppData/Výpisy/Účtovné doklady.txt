@@ -1,0 +1,20 @@
+Ján Meško s. r. o.
+Vyšné Kamence
+Účtovný rok: 2015
+
+Evidencia účtovných dokladov ku dňu 11.7.2015
+
+Počet vedených účtovných dokladov v podniku: 1
+
+============================================================================================
+
+
+Doklad: Vystavená faktúra
+Interné číslo: VFA-1
+Externé číslo: 12345
+Znenie dokladu: Faktura
+Celková hodnota dokladu: 500100.0 €
+Partner: Weiner
+Dátum vytvorenia dokladu: 11.7.2015
+
+

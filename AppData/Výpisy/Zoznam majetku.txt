@@ -1,0 +1,18 @@
+UNIZA s. r. o.
+Veľký diel
+Účtovný rok: 2015
+
+Inventárny súpis skladu ku dňu 11.5.2015
+
+Počet majetku v podniku: 1
+
+============================================================================================
+
+Názov majetku: Auto
+ID majetku: 1
+Cena majetku: 50000.0 €
+Typ majetku: Dlhodobý
+Výrobca majetku: Skoda
+Dátum zaradenia: 11.5.2015
+
+

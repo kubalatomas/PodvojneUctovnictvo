@@ -1,0 +1,24 @@
+UNIZA s. r. o.
+Veľký diel
+Účtovný rok: 2015
+
+Inventárny súpis skladu ku dňu 11.5.2015
+
+Počet vedených položiek skladu v podniku: 2
+
+============================================================================================
+
+Názov tovaru :Cukor
+ID tovaru: 1
+Cena za jednotku: 50.0 €/kg
+Množstvo na sklade: 45
+Dátum zaradenia: 11.5.2015
+
+
+Názov tovaru :Soľ
+ID tovaru: 2
+Cena za jednotku: 50.0 €/kg
+Množstvo na sklade: 20
+Dátum zaradenia: 11.5.2015
+
+
